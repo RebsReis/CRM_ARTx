@@ -1,0 +1,37 @@
+# Blueprint do Render para a API do CRM ART X (ver PUBLICAR_BANCO.md).
+# Variaveis com sync: false sao pedidas no painel ao criar o servico; nunca versionar segredos.
+services:
+  - type: web
+    name: artx-crm-api
+    runtime: python
+    region: virginia
+    plan: free
+    rootDir: backend
+    buildCommand: python -m pip install -r requirements.txt && python -m pip check
+    startCommand: python -m uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.18
+      - key: AUTH_COOKIE_SECURE
+        value: "true"
+      - key: API_DOCS_ENABLED
+        value: "false"
+      - key: DATABASE_URL
+        sync: false
+      - key: APP_ORIGINS
+        sync: false
+      - key: APP_PUBLIC_URL
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_SECURITY
+        value: starttls
+      - key: SMTP_FROM
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
