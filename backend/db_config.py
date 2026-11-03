@@ -103,16 +103,43 @@ def build_migration_url(environ: Mapping[str, str] | None = None) -> URL:
     if not raw:
         raise ValueError("MIGRATION_DATABASE_URL e obrigatoria; migracoes nunca reutilizam DB_* automaticamente.")
     url = build_database_url({**env, "DATABASE_URL": raw})
-    validate_migration_target(url)
+    validate_migration_target(url, env)
     if "-pooler" in (url.host or "").lower().split(".")[0]:
         raise ValueError("Migracoes exigem conexao direta, sem endpoint -pooler.")
     return url
 
 
-def validate_migration_target(url: URL) -> URL:
-    """Reject every migration target except the local isolated test database."""
+def _host_direto(host: str) -> str:
+    # O Neon publica o mesmo banco em ep-x (direto) e ep-x-pooler; ambos identificam o mesmo alvo.
+    primeiro, _, resto = host.lower().rstrip(".").partition(".")
+    primeiro = primeiro.removesuffix("-pooler")
+    return f"{primeiro}.{resto}" if resto else primeiro
+
+
+def production_target_authorized(url: URL, environ: Mapping[str, str] | None = None) -> bool:
+    """True somente para o banco de producao declarado em MIGRATION_PRODUCTION_TARGET (host/banco)."""
+    env = os.environ if environ is None else environ
+    declarado = env.get("MIGRATION_PRODUCTION_TARGET", "").strip()
+    if not declarado:
+        return False
+    host, separador, banco = declarado.partition("/")
+    if not separador or not host or not banco or "/" in banco:
+        raise ValueError("MIGRATION_PRODUCTION_TARGET deve ter o formato host/banco, sem usuario ou senha.")
+    if _host_direto(host) in MIGRATION_TARGET_HOSTS | {"::1"}:
+        raise ValueError("MIGRATION_PRODUCTION_TARGET nao pode apontar para um PostgreSQL local.")
+    if _host_direto(url.host or "") != _host_direto(host) or url.database != banco:
+        return False
+    if url.query.get("sslmode") not in {"require", "verify-ca", "verify-full"}:
+        raise ValueError("O banco de producao exige TLS (sslmode=require, verify-ca ou verify-full).")
+    return True
+
+
+def validate_migration_target(url: URL, environ: Mapping[str, str] | None = None) -> URL:
+    """Aceita o banco de testes local ou, com liberacao explicita, o banco de producao declarado."""
     if url.drivername != "postgresql+psycopg":
         raise ValueError("MIGRATION_DATABASE_URL deve usar o driver PostgreSQL psycopg.")
+    if production_target_authorized(url, environ):
+        return url
     if (url.host or "").lower() not in MIGRATION_TARGET_HOSTS:
         raise ValueError("Migrações só podem usar um host PostgreSQL local autorizado.")
     if url.database != MIGRATION_TARGET_DATABASE:

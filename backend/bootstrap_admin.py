@@ -4,7 +4,7 @@ from pathlib import Path
 from getpass import getpass
 
 from dotenv import load_dotenv
-from db_config import build_database_url
+from db_config import build_database_url, production_target_authorized
 
 
 TARGET_DATABASE = "artx_crm_teste_baseline"
@@ -16,10 +16,15 @@ def validar_destino_antes_do_banco():
     load_dotenv(Path(__file__).resolve().parent.parent / ".env", override=False)
     try:
         url = build_database_url()
-    except ValueError:
-        raise SystemExit("Configuração PostgreSQL ausente ou inválida; nenhum banco foi acessado.") from None
+        producao = production_target_authorized(url)
+    except ValueError as erro:
+        # As mensagens de db_config nunca contem a URL nem credenciais.
+        raise SystemExit(f"Configuração PostgreSQL ausente ou inválida; nenhum banco foi acessado. {erro}") from None
+    if producao:
+        return url
     if (url.host or "").lower() not in TARGET_HOSTS or url.database != TARGET_DATABASE:
-        raise SystemExit("Bootstrap permitido somente em localhost/127.0.0.1 e no banco artx_crm_teste_baseline.")
+        raise SystemExit("Bootstrap permitido somente em localhost/127.0.0.1 e no banco artx_crm_teste_baseline, "
+                         "ou no banco de produção declarado em MIGRATION_PRODUCTION_TARGET.")
     return url
 
 
