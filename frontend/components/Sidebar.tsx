@@ -20,6 +20,8 @@ export default function Sidebar() {
   const { usuario, sair } = useAuth();
   const [erro, setErro] = useState("");
   const [saindo, setSaindo] = useState(false);
+  // No celular o menu vira uma barra no topo; a lista abre e fecha por este botao.
+  const [aberto, setAberto] = useState(false);
   async function encerrarSessao() {
     setSaindo(true); setErro("");
     try { await sair(); }
@@ -28,14 +30,18 @@ export default function Sidebar() {
   }
 
   return (
-    <aside className="w-64 shrink-0 bg-slate-900 p-6 text-white">
+    <aside className="artx-sidebar w-64 shrink-0 bg-slate-900 p-6 text-white" data-aberto={aberto}>
       <h1 className="text-3xl font-bold">ART X</h1>
 
       <p className="mb-10 mt-2 text-sm text-slate-400">
         Gestão de Relacionamento
       </p>
 
-      <nav className="flex flex-col gap-3">
+      <button type="button" className="artx-sidebar-toggle" aria-expanded={aberto} aria-controls="artx-menu" onClick={() => setAberto((valor) => !valor)}>
+        {aberto ? "Fechar" : "Menu"}
+      </button>
+
+      <nav id="artx-menu" className="flex flex-col gap-3">
         {menu.map((item) => {
           const ativo = pathname === item.caminho;
 
@@ -43,6 +49,7 @@ export default function Sidebar() {
             <Link
               key={item.caminho}
               href={item.caminho}
+              onClick={() => setAberto(false)}
               className={`rounded-lg p-3 transition-colors ${
                 ativo
                   ? "bg-blue-600"

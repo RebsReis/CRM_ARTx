@@ -63,6 +63,6 @@ export default function AuthShell({ children }: { children: ReactNode }) {
     definirUsuario(null); router.replace("/login"); router.refresh();
   }
   return <AuthContext.Provider value={{ usuario, definirUsuario, sair }}>
-    {paginasPublicas.has(pathname) ? children : verificando || !usuario ? <main className="artx-leads auth-loading"><p role="status">{erro || "Verificando sessão..."}</p>{erro && <button className="leads-new" onClick={() => void verificar()}>Tentar novamente</button>}</main> : <div key={usuario.id} className="flex min-h-screen bg-slate-100"><Sidebar/><div className="min-w-0 flex-1">{children}</div></div>}
+    {paginasPublicas.has(pathname) ? children : verificando || !usuario ? <main className="artx-leads auth-loading"><p role="status">{erro || "Verificando sessão..."}</p>{erro && <button className="leads-new" onClick={() => void verificar()}>Tentar novamente</button>}</main> : <div key={usuario.id} className="artx-shell flex min-h-screen bg-slate-100"><Sidebar/><div className="min-w-0 flex-1">{children}</div></div>}
   </AuthContext.Provider>;
 }

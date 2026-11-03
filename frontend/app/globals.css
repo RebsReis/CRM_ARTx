@@ -11,3 +11,27 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Celular: o menu lateral vira uma barra no topo com botao Menu, e o conteudo usa a largura toda.
+   "html body" vence as regras de largura do menu em leads.css. */
+.artx-sidebar-toggle { display: none; }
+@media (max-width: 768px) {
+  .artx-shell { flex-direction: column; }
+  html body aside.artx-sidebar {
+    width: 100%; position: sticky; top: 0; z-index: 40;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    padding: 10px 16px; border-right: 0; border-bottom: 1px solid var(--artx-light-border, #2a3032);
+  }
+  html body aside.artx-sidebar > h1 { margin: 0; }
+  html body aside.artx-sidebar > p { display: none; }
+  html body aside.artx-sidebar .artx-sidebar-toggle {
+    display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px;
+    border: 1px solid var(--artx-light-border, #3a464b); border-radius: 999px;
+    background: transparent; color: inherit; font-size: 14px; font-weight: 600;
+  }
+  html body aside.artx-sidebar nav,
+  html body aside.artx-sidebar .sidebar-account { display: none; width: 100%; }
+  html body aside.artx-sidebar[data-aberto="true"] nav { display: flex; margin-top: 10px; }
+  html body aside.artx-sidebar[data-aberto="true"] .sidebar-account { display: block; margin-top: 12px; }
+  html body aside.artx-sidebar nav a { font-size: 15px; padding: 12px 14px; }
+}
