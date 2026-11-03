@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { authRequest, useAuth, type Usuario } from "../../components/AuthShell";
+import { AVISO_LOGIN, authRequest, useAuth, type Usuario } from "../../components/AuthShell";
 import PasswordInput from "../../components/PasswordInput";
 import ThemeSettings from "../../components/ThemeSettings";
 import "./configuracoes.css";
@@ -91,27 +91,33 @@ function MinhaConta({ usuario }: { usuario: Usuario }) {
   const [salvando, setSalvando] = useState(false);
   const [erro, setErro] = useState("");
   const [sucesso, setSucesso] = useState("");
+  // Confirmacao na propria tela: window.confirm pode ser bloqueado pelo navegador e o clique sumia sem aviso.
+  const [confirmandoSenha, setConfirmandoSenha] = useState(false);
   async function salvar(event: FormEvent<HTMLFormElement>, senha: boolean) {
     event.preventDefault(); if (salvando) return;
     setErro(""); setSucesso("");
-    if (senha && novaSenha !== confirmacao) { setErro("A confirmação da senha não confere."); return; }
-    if (senha && !window.confirm("Alterar sua senha? Você precisará entrar novamente em todos os dispositivos.")) return;
+    if (senha && novaSenha !== confirmacao) { setConfirmandoSenha(false); setErro("A confirmação da senha não confere."); return; }
+    if (senha && !confirmandoSenha) { setConfirmandoSenha(true); return; }
     setSalvando(true);
     try {
       if (senha) {
         await authRequest("/auth/senha", { method: "POST", body: JSON.stringify({ senha_atual: senhaAtual, nova_senha: novaSenha, confirmacao }) });
-        setSenhaAtual(""); setNovaSenha(""); setConfirmacao(""); definirUsuario(null);
+        setSenhaAtual(""); setNovaSenha(""); setConfirmacao(""); setConfirmandoSenha(false);
+        try { window.sessionStorage.setItem(AVISO_LOGIN, "Senha alterada. Entre com a nova senha."); } catch { /* sem armazenamento, so nao mostra o aviso */ }
+        definirUsuario(null);
       } else {
         const atual = await authRequest<Usuario>("/auth/me", { method: "PATCH", body: JSON.stringify({ nome, email, ...(email !== usuario.email ? { senha_atual: senhaAtual } : {}) }) });
         definirUsuario(atual); setNome(atual.nome); setEmail(atual.email); setSenhaAtual(""); setSucesso(email !== atual.email ? "Confirmação enviada ao novo e-mail. O endereço atual permanece até a confirmação." : "Dados pessoais atualizados.");
       }
-    } catch (error) { setErro(error instanceof Error ? error.message : "Não foi possível salvar."); }
+    } catch (error) { setConfirmandoSenha(false); setErro(error instanceof Error ? error.message : "Não foi possível salvar."); }
     finally { setSalvando(false); }
   }
   return <section className="config-card"><div className="config-section-title"><div><h2>Minha conta</h2><p className="config-muted">Seus dados e a segurança do seu acesso.</p></div><span className="config-badge">{usuario.tipo === "ADMIN" ? "Administrador" : "Usuário"}</span></div>
     {erro && <p className="config-message config-error" role="alert">{erro}</p>}{sucesso && <p className="config-message config-success" role="status">{sucesso}</p>}
     <div className="config-account-grid"><form onSubmit={(e) => void salvar(e, false)}><h3>Dados pessoais</h3><fieldset disabled={salvando}><label>Nome<input required maxLength={150} value={nome} onChange={(e) => setNome(e.target.value)}/></label><label>E-mail<input type="email" required maxLength={150} value={email} onChange={(e) => setEmail(e.target.value)}/></label>{email !== usuario.email && <label>Senha atual para alterar o e-mail<input type="password" required autoComplete="current-password" value={senhaAtual} onChange={(event) => setSenhaAtual(event.target.value)}/></label>}</fieldset><button className="leads-new" disabled={salvando}>Salvar meus dados</button></form>
-    <form onSubmit={(e) => void salvar(e, true)}><h3>Alterar minha senha</h3><fieldset disabled={salvando}><label>Senha atual<input type="password" autoComplete="current-password" required maxLength={128} value={senhaAtual} onChange={(e) => setSenhaAtual(e.target.value)}/></label><label>Nova senha<PasswordInput autoComplete="new-password" required minLength={8} maxLength={128} value={novaSenha} onChange={(e) => setNovaSenha(e.target.value)}/></label><label>Confirme a nova senha<PasswordInput autoComplete="new-password" required minLength={8} maxLength={128} value={confirmacao} onChange={(e) => setConfirmacao(e.target.value)}/></label></fieldset><button className="config-secondary" disabled={salvando}>Alterar senha</button></form></div>
+    <form onSubmit={(e) => void salvar(e, true)}><h3>Alterar minha senha</h3><fieldset disabled={salvando}><label>Senha atual<input type="password" autoComplete="current-password" required maxLength={128} value={senhaAtual} onChange={(e) => setSenhaAtual(e.target.value)}/></label><label>Nova senha<PasswordInput autoComplete="new-password" required minLength={8} maxLength={128} value={novaSenha} onChange={(e) => setNovaSenha(e.target.value)}/></label><label>Confirme a nova senha<PasswordInput autoComplete="new-password" required minLength={8} maxLength={128} value={confirmacao} onChange={(e) => setConfirmacao(e.target.value)}/></label></fieldset>{confirmandoSenha
+      ? <><p className="config-message" role="alert">Alterar sua senha? Você precisará entrar novamente em todos os dispositivos.</p><div className="config-actions"><button type="button" className="config-secondary" disabled={salvando} onClick={() => setConfirmandoSenha(false)}>Cancelar</button><button className="leads-new" disabled={salvando}>{salvando ? "Alterando..." : "Confirmar alteração"}</button></div></>
+      : <button className="config-secondary" disabled={salvando}>Alterar senha</button>}</form></div>
   </section>;
 }
 

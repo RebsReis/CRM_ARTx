@@ -16,6 +16,9 @@ export function useAuth() {
   return context;
 }
 
+// Mensagem deixada para a tela de login quando a sessao e encerrada de proposito (ex.: troca de senha).
+export const AVISO_LOGIN = "artx-aviso-login";
+
 export async function authRequest<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(`/api/crm${path}`, { ...options, credentials: "same-origin", cache: "no-store", headers: { "Content-Type": "application/json", ...options?.headers } });
   if (!response.ok) {
