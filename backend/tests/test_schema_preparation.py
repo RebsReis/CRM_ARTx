@@ -71,10 +71,10 @@ class SchemaPreparationTest(unittest.TestCase):
 
     def test_historico_alembic_e_estatico(self):
         scripts = ScriptDirectory.from_config(Config(str(BACKEND / "alembic.ini")))
-        # Cadeia linear: baseline -> 0002 -> 0003, sem ramificacoes.
+        # Cadeia linear: baseline -> 0002 -> 0003 -> 0004, sem ramificacoes.
         cadeia = [r.revision for r in scripts.walk_revisions()][::-1]
-        self.assertEqual(cadeia, [BASELINE_REVISION, "20261029_0002", "20261029_0003"])
-        self.assertEqual(scripts.get_heads(), ["20261029_0003"])
+        self.assertEqual(cadeia, [BASELINE_REVISION, "20261029_0002", "20261029_0003", "20261103_0004"])
+        self.assertEqual(scripts.get_heads(), ["20261103_0004"])
         self.assertIsNone(scripts.get_revision(BASELINE_REVISION).down_revision)
 
     def test_inspecao_preparada_e_somente_leitura(self):

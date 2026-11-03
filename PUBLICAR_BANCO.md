@@ -41,7 +41,7 @@ transação: se algo falhar, nada fica pela metade. Ao final, confira:
 .venv-migracoes\Scripts\python.exe -m alembic -c backend\alembic.ini -x allow_database_access=yes -x mode=inspect current
 ```
 
-A resposta deve ser `20261029_0003 (head)`.
+A resposta deve ser `20261103_0004 (head)`.
 
 **Fuso horário (obrigatório).** O CRM grava prospecções, reuniões e fechamentos com
 o relógio do PostgreSQL. O banco local usa `America/Sao_Paulo`; o Neon usa UTC por
