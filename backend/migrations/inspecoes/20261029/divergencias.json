@@ -1,0 +1,355 @@
+{
+  "tables_missing": [],
+  "tables_extra": [],
+  "columns_missing": [],
+  "columns_extra": [],
+  "types": [],
+  "nullable": [
+    {
+      "column": "reunioes.criado_em",
+      "model": true,
+      "database": false
+    }
+  ],
+  "identity": [
+    {
+      "column": "metas.id",
+      "model": "implicit serial if PK",
+      "database": "ALWAYS"
+    },
+    {
+      "column": "reunioes.id",
+      "model": "implicit serial if PK",
+      "database": "ALWAYS"
+    },
+    {
+      "column": "checklist_items.id",
+      "model": "implicit serial if PK",
+      "database": "ALWAYS"
+    }
+  ],
+  "defaults": [
+    {
+      "column": "leads.fase",
+      "model_server_default": null,
+      "model_application_default": null,
+      "database": "'PROSPECTAR'::character varying"
+    },
+    {
+      "column": "metas.meta_prospeccoes",
+      "model_server_default": null,
+      "model_application_default": "0",
+      "database": "0"
+    },
+    {
+      "column": "metas.meta_reunioes",
+      "model_server_default": null,
+      "model_application_default": "0",
+      "database": "0"
+    },
+    {
+      "column": "metas.meta_faturamento",
+      "model_server_default": null,
+      "model_application_default": "0",
+      "database": "0"
+    },
+    {
+      "column": "metas.criado_em",
+      "model_server_default": null,
+      "model_application_default": "datetime.now",
+      "database": "CURRENT_TIMESTAMP"
+    },
+    {
+      "column": "metas.atualizado_em",
+      "model_server_default": null,
+      "model_application_default": "datetime.now",
+      "database": "CURRENT_TIMESTAMP"
+    },
+    {
+      "column": "reunioes.status",
+      "model_server_default": null,
+      "model_application_default": "AGENDADA",
+      "database": "'AGENDADA'::character varying"
+    },
+    {
+      "column": "reunioes.criado_em",
+      "model_server_default": null,
+      "model_application_default": null,
+      "database": "CURRENT_TIMESTAMP"
+    },
+    {
+      "column": "projetos.criado_em",
+      "model_server_default": null,
+      "model_application_default": "datetime.now",
+      "database": "CURRENT_TIMESTAMP"
+    },
+    {
+      "column": "checklist_items.concluido",
+      "model_server_default": null,
+      "model_application_default": "False",
+      "database": "false"
+    },
+    {
+      "column": "checklist_items.ordem",
+      "model_server_default": null,
+      "model_application_default": "0",
+      "database": "0"
+    },
+    {
+      "column": "checklist_items.criado_em",
+      "model_server_default": null,
+      "model_application_default": "datetime.now",
+      "database": "CURRENT_TIMESTAMP"
+    }
+  ],
+  "actual_foreign_keys": [
+    {
+      "tabela": "historico_leads",
+      "conname": "fk_historico_lead",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (lead_id) REFERENCES leads(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "fk_cliente_lead",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (lead_id) REFERENCES leads(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "fluxos_google",
+      "conname": "fluxos_google_usuario_id_fkey",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "identidades_google",
+      "conname": "identidades_google_usuario_id_fkey",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "fk_reuniao_lead",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (lead_id) REFERENCES leads(id)"
+    },
+    {
+      "tabela": "sessoes_usuario",
+      "conname": "sessoes_usuario_usuario_id_fkey",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_usuario_id_fkey",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "fk_projeto_cliente",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (cliente_id) REFERENCES clientes(id)"
+    },
+    {
+      "tabela": "checklist_items",
+      "conname": "fk_checklist_projeto",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (projeto_id) REFERENCES projetos(id) ON DELETE CASCADE"
+    }
+  ],
+  "actual_unique_constraints": [
+    {
+      "tabela": "metas",
+      "conname": "uq_meta_mes",
+      "contype": "u",
+      "convalidated": true,
+      "definicao": "UNIQUE (ano, mes)"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_email_key",
+      "contype": "u",
+      "convalidated": true,
+      "definicao": "UNIQUE (email)"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_lead_id_key",
+      "contype": "u",
+      "convalidated": true,
+      "definicao": "UNIQUE (lead_id)"
+    },
+    {
+      "tabela": "identidades_google",
+      "conname": "identidades_google_usuario_id_key",
+      "contype": "u",
+      "convalidated": true,
+      "definicao": "UNIQUE (usuario_id)"
+    }
+  ],
+  "check_constraints_not_in_models": [
+    {
+      "tabela": "leads",
+      "conname": "leads_fase_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (fase::text = ANY (ARRAY['PROSPECTAR'::character varying, 'FOLLOW_UP'::character varying, 'REUNIAO_MARCADA'::character varying, 'REMARKETING_FUTURO'::character varying]::text[]))"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_mes_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (mes >= 1 AND mes <= 12)"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_meta_faturamento_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (meta_faturamento >= 0::numeric)"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_meta_prospeccoes_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (meta_prospeccoes >= 0)"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_meta_reunioes_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (meta_reunioes >= 0)"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "chk_datas_cliente",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (data_encerramento IS NULL OR data_encerramento >= data_inicio)"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_status_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (status::text = ANY (ARRAY['ATIVO'::character varying, 'INATIVO'::character varying]::text[]))"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_valor_mensal_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (valor_mensal >= 0::numeric)"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "reunioes_status_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (status::text = ANY (ARRAY['AGENDADA'::character varying, 'REALIZADA'::character varying, 'CANCELADA'::character varying]::text[]))"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_finalidade_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (finalidade::text = ANY (ARRAY['VERIFICAR'::character varying, 'RESET'::character varying]::text[]))"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_prioridade_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (prioridade::text = ANY (ARRAY['BAIXA'::character varying, 'MEDIA'::character varying, 'ALTA'::character varying, 'URGENTE'::character varying]::text[]))"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_status_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (status::text = ANY (ARRAY['PENDENTE'::character varying, 'EM_ANDAMENTO'::character varying, 'FINALIZADA'::character varying]::text[]))"
+    }
+  ],
+  "modeled_indexes_not_matching_names": [],
+  "foreign_key_differences": [
+    {
+      "table": "checklist_items",
+      "columns": [
+        "projeto_id"
+      ],
+      "constraint": "fk_checklist_projeto",
+      "model": {
+        "target": "projetos",
+        "ondelete": "NO ACTION"
+      },
+      "database": {
+        "target": "projetos",
+        "ondelete": "CASCADE"
+      }
+    },
+    {
+      "table": "clientes",
+      "columns": [
+        "lead_id"
+      ],
+      "constraint": "fk_cliente_lead",
+      "model": {
+        "target": "leads",
+        "ondelete": "NO ACTION"
+      },
+      "database": {
+        "target": "leads",
+        "ondelete": "SET NULL"
+      }
+    },
+    {
+      "table": "historico_leads",
+      "columns": [
+        "lead_id"
+      ],
+      "constraint": "fk_historico_lead",
+      "model": null,
+      "database": {
+        "target": "leads",
+        "ondelete": "CASCADE"
+      }
+    }
+  ],
+  "checks_missing_from_candidate": [
+    "chk_datas_cliente",
+    "clientes_status_check",
+    "clientes_valor_mensal_check",
+    "leads_fase_check",
+    "metas_mes_check",
+    "metas_meta_faturamento_check",
+    "metas_meta_prospeccoes_check",
+    "metas_meta_reunioes_check",
+    "projetos_prioridade_check",
+    "projetos_status_check",
+    "reunioes_status_check"
+  ],
+  "candidate_index_names_missing": [
+    "ix_sessoes_usuario_usuario_id",
+    "ix_tentativas_login_chave",
+    "ix_tokens_email_usuario_id"
+  ],
+  "candidate_index_names_extra": [
+    "ix_public_sessoes_usuario_usuario_id",
+    "ix_public_tentativas_login_chave",
+    "ix_public_tokens_email_usuario_id"
+  ],
+  "candidate_note": "ix_public_* names in candidate differ from real ix_* despite equivalent indexed columns; do not create duplicate indexes."
+}

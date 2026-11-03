@@ -1,0 +1,59 @@
+EVIDENCIA DE INSPECAO SOMENTE DE LEITURA ? 29/10/2026
+Nao e migracao. Nao executar este arquivo.
+Definicoes retornadas pelo catalogo, sem execucao dos corpos das funcoes.
+
+=== FUNCAO public.atualizar_data_modificacao() ===
+CREATE OR REPLACE FUNCTION public.atualizar_data_modificacao()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+BEGIN
+    NEW.atualizado_em = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$function$
+
+=== FUNCAO public.registrar_historico_lead() ===
+CREATE OR REPLACE FUNCTION public.registrar_historico_lead()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+BEGIN
+    IF OLD.fase IS DISTINCT FROM NEW.fase THEN
+
+        INSERT INTO historico_leads (
+            lead_id,
+            fase_anterior,
+            fase_nova,
+            movimentado_em
+        )
+        VALUES (
+            OLD.id,
+            OLD.fase,
+            NEW.fase,
+            CURRENT_TIMESTAMP
+        );
+
+    END IF;
+
+    NEW.atualizado_em = CURRENT_TIMESTAMP;
+
+    RETURN NEW;
+END;
+$function$
+
+=== TRIGGER clientes.trigger_atualizar_clientes [tgenabled=O] ===
+CREATE TRIGGER trigger_atualizar_clientes BEFORE UPDATE ON clientes FOR EACH ROW EXECUTE FUNCTION atualizar_data_modificacao()
+
+=== TRIGGER leads.trigger_historico_lead [tgenabled=O] ===
+CREATE TRIGGER trigger_historico_lead BEFORE UPDATE ON leads FOR EACH ROW EXECUTE FUNCTION registrar_historico_lead()
+
+=== TRIGGER metas.trigger_atualizar_metas [tgenabled=O] ===
+CREATE TRIGGER trigger_atualizar_metas BEFORE UPDATE ON metas FOR EACH ROW EXECUTE FUNCTION atualizar_data_modificacao()
+
+=== TRIGGER projetos.trigger_atualizar_projetos [tgenabled=O] ===
+CREATE TRIGGER trigger_atualizar_projetos BEFORE UPDATE ON projetos FOR EACH ROW EXECUTE FUNCTION atualizar_data_modificacao()
+
+=== TRIGGER usuarios.trigger_atualizar_usuarios [tgenabled=O] ===
+CREATE TRIGGER trigger_atualizar_usuarios BEFORE UPDATE ON usuarios FOR EACH ROW EXECUTE FUNCTION atualizar_data_modificacao()
+

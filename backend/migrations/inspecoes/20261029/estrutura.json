@@ -1,0 +1,2374 @@
+{
+  "captured_at_utc": "2026-10-29T17:13:54.446516+00:00",
+  "sql_sha256": "d6c9a8ad220f31c32e0a8a905d3f4febe62051bc6ea8ca0f46e45098ee605b5e",
+  "local_only": true,
+  "read_only": {
+    "default_read_only": "on",
+    "transaction_read_only": "on"
+  },
+  "settings": [
+    {
+      "server_version_num": "180006",
+      "timezone": "America/Sao_Paulo"
+    }
+  ],
+  "columns": [
+    {
+      "table_name": "checklist_items",
+      "ordinal_position": 1,
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "identity_generation": "ALWAYS"
+    },
+    {
+      "table_name": "checklist_items",
+      "ordinal_position": 2,
+      "column_name": "projeto_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "checklist_items",
+      "ordinal_position": 3,
+      "column_name": "descricao",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 255,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "checklist_items",
+      "ordinal_position": 4,
+      "column_name": "concluido",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "false",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "checklist_items",
+      "ordinal_position": 5,
+      "column_name": "ordem",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "character_maximum_length": null,
+      "numeric_precision": 32,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": "0",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "checklist_items",
+      "ordinal_position": 6,
+      "column_name": "criado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "checklist_items",
+      "ordinal_position": 7,
+      "column_name": "concluido_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 1,
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "identity_generation": "ALWAYS"
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 2,
+      "column_name": "lead_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 3,
+      "column_name": "nome_empresa",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 150,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 4,
+      "column_name": "nicho",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 100,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 5,
+      "column_name": "telefone",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 30,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 6,
+      "column_name": "email",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 150,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 7,
+      "column_name": "valor_mensal",
+      "data_type": "numeric",
+      "udt_name": "numeric",
+      "character_maximum_length": null,
+      "numeric_precision": 12,
+      "numeric_scale": 2,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 8,
+      "column_name": "data_inicio",
+      "data_type": "date",
+      "udt_name": "date",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_DATE",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 9,
+      "column_name": "data_encerramento",
+      "data_type": "date",
+      "udt_name": "date",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 10,
+      "column_name": "status",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 20,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'ATIVO'::character varying",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 11,
+      "column_name": "criado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "clientes",
+      "ordinal_position": 12,
+      "column_name": "atualizado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "fluxos_google",
+      "ordinal_position": 1,
+      "column_name": "state_hash",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 64,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "fluxos_google",
+      "ordinal_position": 2,
+      "column_name": "browser_hash",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 64,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "fluxos_google",
+      "ordinal_position": 3,
+      "column_name": "nonce",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 64,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "fluxos_google",
+      "ordinal_position": 4,
+      "column_name": "verifier",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 128,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "fluxos_google",
+      "ordinal_position": 5,
+      "column_name": "usuario_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "fluxos_google",
+      "ordinal_position": 6,
+      "column_name": "sessao_hash",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 64,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "fluxos_google",
+      "ordinal_position": 7,
+      "column_name": "expira_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "historico_leads",
+      "ordinal_position": 1,
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "identity_generation": "ALWAYS"
+    },
+    {
+      "table_name": "historico_leads",
+      "ordinal_position": 2,
+      "column_name": "lead_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "historico_leads",
+      "ordinal_position": 3,
+      "column_name": "fase_anterior",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 30,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "historico_leads",
+      "ordinal_position": 4,
+      "column_name": "fase_nova",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 30,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "historico_leads",
+      "ordinal_position": 5,
+      "column_name": "movimentado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "identidades_google",
+      "ordinal_position": 1,
+      "column_name": "sub",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 255,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "identidades_google",
+      "ordinal_position": 2,
+      "column_name": "usuario_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "identidades_google",
+      "ordinal_position": 3,
+      "column_name": "email_google",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 150,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "identidades_google",
+      "ordinal_position": 4,
+      "column_name": "criado_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 1,
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "identity_generation": "ALWAYS"
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 2,
+      "column_name": "nome_empresa",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 150,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 3,
+      "column_name": "nicho",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 100,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 4,
+      "column_name": "telefone",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 30,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 5,
+      "column_name": "email",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 150,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 6,
+      "column_name": "fase",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 30,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'PROSPECTAR'::character varying",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 7,
+      "column_name": "observacao",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 8,
+      "column_name": "criado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 9,
+      "column_name": "atualizado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 10,
+      "column_name": "prospectado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "leads",
+      "ordinal_position": 11,
+      "column_name": "arquivado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "metas",
+      "ordinal_position": 1,
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "identity_generation": "ALWAYS"
+    },
+    {
+      "table_name": "metas",
+      "ordinal_position": 2,
+      "column_name": "ano",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "character_maximum_length": null,
+      "numeric_precision": 32,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "metas",
+      "ordinal_position": 3,
+      "column_name": "mes",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "character_maximum_length": null,
+      "numeric_precision": 32,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "metas",
+      "ordinal_position": 4,
+      "column_name": "meta_prospeccoes",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "character_maximum_length": null,
+      "numeric_precision": 32,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": "0",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "metas",
+      "ordinal_position": 5,
+      "column_name": "meta_reunioes",
+      "data_type": "integer",
+      "udt_name": "int4",
+      "character_maximum_length": null,
+      "numeric_precision": 32,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": "0",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "metas",
+      "ordinal_position": 6,
+      "column_name": "meta_faturamento",
+      "data_type": "numeric",
+      "udt_name": "numeric",
+      "character_maximum_length": null,
+      "numeric_precision": 12,
+      "numeric_scale": 2,
+      "is_nullable": "NO",
+      "column_default": "0",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "metas",
+      "ordinal_position": 7,
+      "column_name": "criado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "metas",
+      "ordinal_position": 8,
+      "column_name": "atualizado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "projetos",
+      "ordinal_position": 1,
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "identity_generation": "ALWAYS"
+    },
+    {
+      "table_name": "projetos",
+      "ordinal_position": 2,
+      "column_name": "cliente_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "projetos",
+      "ordinal_position": 3,
+      "column_name": "nome_projeto",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 200,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "projetos",
+      "ordinal_position": 4,
+      "column_name": "prazo",
+      "data_type": "date",
+      "udt_name": "date",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "projetos",
+      "ordinal_position": 5,
+      "column_name": "prioridade",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 20,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'MEDIA'::character varying",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "projetos",
+      "ordinal_position": 6,
+      "column_name": "status",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 30,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'PENDENTE'::character varying",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "projetos",
+      "ordinal_position": 7,
+      "column_name": "observacao",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "projetos",
+      "ordinal_position": 8,
+      "column_name": "criado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "projetos",
+      "ordinal_position": 9,
+      "column_name": "atualizado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "reunioes",
+      "ordinal_position": 1,
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "identity_generation": "ALWAYS"
+    },
+    {
+      "table_name": "reunioes",
+      "ordinal_position": 2,
+      "column_name": "lead_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "reunioes",
+      "ordinal_position": 3,
+      "column_name": "data_reuniao",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "reunioes",
+      "ordinal_position": 4,
+      "column_name": "status",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 20,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'AGENDADA'::character varying",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "reunioes",
+      "ordinal_position": 5,
+      "column_name": "observacao",
+      "data_type": "text",
+      "udt_name": "text",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "reunioes",
+      "ordinal_position": 6,
+      "column_name": "criado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "sessoes_usuario",
+      "ordinal_position": 1,
+      "column_name": "token_hash",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 64,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "sessoes_usuario",
+      "ordinal_position": 2,
+      "column_name": "usuario_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "sessoes_usuario",
+      "ordinal_position": 3,
+      "column_name": "expira_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "sessoes_usuario",
+      "ordinal_position": 4,
+      "column_name": "criado_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "tentativas_login",
+      "ordinal_position": 1,
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "identity_generation": "ALWAYS"
+    },
+    {
+      "table_name": "tentativas_login",
+      "ordinal_position": 2,
+      "column_name": "chave",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 64,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "tentativas_login",
+      "ordinal_position": 3,
+      "column_name": "criado_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "tokens_email",
+      "ordinal_position": 1,
+      "column_name": "token_hash",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 64,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "tokens_email",
+      "ordinal_position": 2,
+      "column_name": "usuario_id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "tokens_email",
+      "ordinal_position": 3,
+      "column_name": "finalidade",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 20,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "tokens_email",
+      "ordinal_position": 4,
+      "column_name": "destino_email",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 150,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "tokens_email",
+      "ordinal_position": 5,
+      "column_name": "expira_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "tokens_email",
+      "ordinal_position": 6,
+      "column_name": "usado_em",
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 1,
+      "column_name": "id",
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "character_maximum_length": null,
+      "numeric_precision": 64,
+      "numeric_scale": 0,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "identity_generation": "ALWAYS"
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 2,
+      "column_name": "nome",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 150,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 3,
+      "column_name": "email",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 150,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 4,
+      "column_name": "senha_hash",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 255,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 5,
+      "column_name": "tipo",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 20,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'USUARIO'::character varying",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 6,
+      "column_name": "ativo",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "true",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 7,
+      "column_name": "criado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 8,
+      "column_name": "atualizado_em",
+      "data_type": "timestamp without time zone",
+      "udt_name": "timestamp",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 9,
+      "column_name": "status_acesso",
+      "data_type": "character varying",
+      "udt_name": "varchar",
+      "character_maximum_length": 20,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "'APROVADO'::character varying",
+      "is_identity": "NO",
+      "identity_generation": null
+    },
+    {
+      "table_name": "usuarios",
+      "ordinal_position": 10,
+      "column_name": "email_verificado",
+      "data_type": "boolean",
+      "udt_name": "bool",
+      "character_maximum_length": null,
+      "numeric_precision": null,
+      "numeric_scale": null,
+      "is_nullable": "NO",
+      "column_default": "true",
+      "is_identity": "NO",
+      "identity_generation": null
+    }
+  ],
+  "constraints": [
+    {
+      "tabela": "checklist_items",
+      "conname": "checklist_items_concluido_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL concluido"
+    },
+    {
+      "tabela": "checklist_items",
+      "conname": "checklist_items_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "checklist_items",
+      "conname": "checklist_items_descricao_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL descricao"
+    },
+    {
+      "tabela": "checklist_items",
+      "conname": "checklist_items_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "checklist_items",
+      "conname": "checklist_items_ordem_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL ordem"
+    },
+    {
+      "tabela": "checklist_items",
+      "conname": "checklist_items_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "checklist_items",
+      "conname": "checklist_items_projeto_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL projeto_id"
+    },
+    {
+      "tabela": "checklist_items",
+      "conname": "fk_checklist_projeto",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (projeto_id) REFERENCES projetos(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "chk_datas_cliente",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (data_encerramento IS NULL OR data_encerramento >= data_inicio)"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_atualizado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL atualizado_em"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_data_inicio_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL data_inicio"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_lead_id_key",
+      "contype": "u",
+      "convalidated": true,
+      "definicao": "UNIQUE (lead_id)"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_nome_empresa_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL nome_empresa"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_status_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (status::text = ANY (ARRAY['ATIVO'::character varying, 'INATIVO'::character varying]::text[]))"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_status_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL status"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_valor_mensal_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (valor_mensal >= 0::numeric)"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "clientes_valor_mensal_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL valor_mensal"
+    },
+    {
+      "tabela": "clientes",
+      "conname": "fk_cliente_lead",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (lead_id) REFERENCES leads(id) ON DELETE SET NULL"
+    },
+    {
+      "tabela": "fluxos_google",
+      "conname": "fluxos_google_browser_hash_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL browser_hash"
+    },
+    {
+      "tabela": "fluxos_google",
+      "conname": "fluxos_google_expira_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL expira_em"
+    },
+    {
+      "tabela": "fluxos_google",
+      "conname": "fluxos_google_nonce_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL nonce"
+    },
+    {
+      "tabela": "fluxos_google",
+      "conname": "fluxos_google_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (state_hash)"
+    },
+    {
+      "tabela": "fluxos_google",
+      "conname": "fluxos_google_state_hash_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL state_hash"
+    },
+    {
+      "tabela": "fluxos_google",
+      "conname": "fluxos_google_usuario_id_fkey",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "fluxos_google",
+      "conname": "fluxos_google_verifier_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL verifier"
+    },
+    {
+      "tabela": "historico_leads",
+      "conname": "fk_historico_lead",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (lead_id) REFERENCES leads(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "historico_leads",
+      "conname": "historico_leads_fase_nova_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL fase_nova"
+    },
+    {
+      "tabela": "historico_leads",
+      "conname": "historico_leads_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "historico_leads",
+      "conname": "historico_leads_lead_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL lead_id"
+    },
+    {
+      "tabela": "historico_leads",
+      "conname": "historico_leads_movimentado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL movimentado_em"
+    },
+    {
+      "tabela": "historico_leads",
+      "conname": "historico_leads_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "identidades_google",
+      "conname": "identidades_google_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "identidades_google",
+      "conname": "identidades_google_email_google_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL email_google"
+    },
+    {
+      "tabela": "identidades_google",
+      "conname": "identidades_google_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (sub)"
+    },
+    {
+      "tabela": "identidades_google",
+      "conname": "identidades_google_sub_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL sub"
+    },
+    {
+      "tabela": "identidades_google",
+      "conname": "identidades_google_usuario_id_fkey",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "identidades_google",
+      "conname": "identidades_google_usuario_id_key",
+      "contype": "u",
+      "convalidated": true,
+      "definicao": "UNIQUE (usuario_id)"
+    },
+    {
+      "tabela": "identidades_google",
+      "conname": "identidades_google_usuario_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL usuario_id"
+    },
+    {
+      "tabela": "leads",
+      "conname": "leads_atualizado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL atualizado_em"
+    },
+    {
+      "tabela": "leads",
+      "conname": "leads_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "leads",
+      "conname": "leads_fase_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (fase::text = ANY (ARRAY['PROSPECTAR'::character varying, 'FOLLOW_UP'::character varying, 'REUNIAO_MARCADA'::character varying, 'REMARKETING_FUTURO'::character varying]::text[]))"
+    },
+    {
+      "tabela": "leads",
+      "conname": "leads_fase_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL fase"
+    },
+    {
+      "tabela": "leads",
+      "conname": "leads_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "leads",
+      "conname": "leads_nome_empresa_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL nome_empresa"
+    },
+    {
+      "tabela": "leads",
+      "conname": "leads_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_ano_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL ano"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_atualizado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL atualizado_em"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_mes_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (mes >= 1 AND mes <= 12)"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_mes_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL mes"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_meta_faturamento_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (meta_faturamento >= 0::numeric)"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_meta_faturamento_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL meta_faturamento"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_meta_prospeccoes_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (meta_prospeccoes >= 0)"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_meta_prospeccoes_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL meta_prospeccoes"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_meta_reunioes_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (meta_reunioes >= 0)"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_meta_reunioes_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL meta_reunioes"
+    },
+    {
+      "tabela": "metas",
+      "conname": "metas_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "metas",
+      "conname": "uq_meta_mes",
+      "contype": "u",
+      "convalidated": true,
+      "definicao": "UNIQUE (ano, mes)"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "fk_projeto_cliente",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (cliente_id) REFERENCES clientes(id)"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_atualizado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL atualizado_em"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_cliente_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL cliente_id"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_nome_projeto_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL nome_projeto"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_prioridade_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (prioridade::text = ANY (ARRAY['BAIXA'::character varying, 'MEDIA'::character varying, 'ALTA'::character varying, 'URGENTE'::character varying]::text[]))"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_prioridade_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL prioridade"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_status_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (status::text = ANY (ARRAY['PENDENTE'::character varying, 'EM_ANDAMENTO'::character varying, 'FINALIZADA'::character varying]::text[]))"
+    },
+    {
+      "tabela": "projetos",
+      "conname": "projetos_status_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL status"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "fk_reuniao_lead",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (lead_id) REFERENCES leads(id)"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "reunioes_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "reunioes_data_reuniao_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL data_reuniao"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "reunioes_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "reunioes_lead_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL lead_id"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "reunioes_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "reunioes_status_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (status::text = ANY (ARRAY['AGENDADA'::character varying, 'REALIZADA'::character varying, 'CANCELADA'::character varying]::text[]))"
+    },
+    {
+      "tabela": "reunioes",
+      "conname": "reunioes_status_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL status"
+    },
+    {
+      "tabela": "sessoes_usuario",
+      "conname": "sessoes_usuario_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "sessoes_usuario",
+      "conname": "sessoes_usuario_expira_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL expira_em"
+    },
+    {
+      "tabela": "sessoes_usuario",
+      "conname": "sessoes_usuario_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (token_hash)"
+    },
+    {
+      "tabela": "sessoes_usuario",
+      "conname": "sessoes_usuario_token_hash_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL token_hash"
+    },
+    {
+      "tabela": "sessoes_usuario",
+      "conname": "sessoes_usuario_usuario_id_fkey",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "sessoes_usuario",
+      "conname": "sessoes_usuario_usuario_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL usuario_id"
+    },
+    {
+      "tabela": "tentativas_login",
+      "conname": "tentativas_login_chave_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL chave"
+    },
+    {
+      "tabela": "tentativas_login",
+      "conname": "tentativas_login_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "tentativas_login",
+      "conname": "tentativas_login_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "tentativas_login",
+      "conname": "tentativas_login_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_destino_email_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL destino_email"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_expira_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL expira_em"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_finalidade_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (finalidade::text = ANY (ARRAY['VERIFICAR'::character varying, 'RESET'::character varying]::text[]))"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_finalidade_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL finalidade"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (token_hash)"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_token_hash_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL token_hash"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_usuario_id_fkey",
+      "contype": "f",
+      "convalidated": true,
+      "definicao": "FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE"
+    },
+    {
+      "tabela": "tokens_email",
+      "conname": "tokens_email_usuario_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL usuario_id"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_admin_ativo",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (tipo::text <> 'ADMIN'::text OR ativo)"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_ativo_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL ativo"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_atualizado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL atualizado_em"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_criado_em_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL criado_em"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_email_key",
+      "contype": "u",
+      "convalidated": true,
+      "definicao": "UNIQUE (email)"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_email_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL email"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_email_verificado_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL email_verificado"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_id_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL id"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_nome_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL nome"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_pkey",
+      "contype": "p",
+      "convalidated": true,
+      "definicao": "PRIMARY KEY (id)"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_status_acesso_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (status_acesso::text = ANY (ARRAY['PENDENTE'::character varying, 'APROVADO'::character varying, 'RECUSADO'::character varying]::text[]))"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_status_acesso_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL status_acesso"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_tipo_check",
+      "contype": "c",
+      "convalidated": true,
+      "definicao": "CHECK (tipo::text = ANY (ARRAY['ADMIN'::character varying, 'USUARIO'::character varying]::text[]))"
+    },
+    {
+      "tabela": "usuarios",
+      "conname": "usuarios_tipo_not_null",
+      "contype": "n",
+      "convalidated": true,
+      "definicao": "NOT NULL tipo"
+    }
+  ],
+  "indexes": [
+    {
+      "tablename": "checklist_items",
+      "indexname": "checklist_items_pkey",
+      "indexdef": "CREATE UNIQUE INDEX checklist_items_pkey ON public.checklist_items USING btree (id)"
+    },
+    {
+      "tablename": "clientes",
+      "indexname": "clientes_lead_id_key",
+      "indexdef": "CREATE UNIQUE INDEX clientes_lead_id_key ON public.clientes USING btree (lead_id)"
+    },
+    {
+      "tablename": "clientes",
+      "indexname": "clientes_pkey",
+      "indexdef": "CREATE UNIQUE INDEX clientes_pkey ON public.clientes USING btree (id)"
+    },
+    {
+      "tablename": "fluxos_google",
+      "indexname": "fluxos_google_pkey",
+      "indexdef": "CREATE UNIQUE INDEX fluxos_google_pkey ON public.fluxos_google USING btree (state_hash)"
+    },
+    {
+      "tablename": "historico_leads",
+      "indexname": "historico_leads_pkey",
+      "indexdef": "CREATE UNIQUE INDEX historico_leads_pkey ON public.historico_leads USING btree (id)"
+    },
+    {
+      "tablename": "identidades_google",
+      "indexname": "identidades_google_pkey",
+      "indexdef": "CREATE UNIQUE INDEX identidades_google_pkey ON public.identidades_google USING btree (sub)"
+    },
+    {
+      "tablename": "identidades_google",
+      "indexname": "identidades_google_usuario_id_key",
+      "indexdef": "CREATE UNIQUE INDEX identidades_google_usuario_id_key ON public.identidades_google USING btree (usuario_id)"
+    },
+    {
+      "tablename": "leads",
+      "indexname": "leads_pkey",
+      "indexdef": "CREATE UNIQUE INDEX leads_pkey ON public.leads USING btree (id)"
+    },
+    {
+      "tablename": "metas",
+      "indexname": "metas_pkey",
+      "indexdef": "CREATE UNIQUE INDEX metas_pkey ON public.metas USING btree (id)"
+    },
+    {
+      "tablename": "metas",
+      "indexname": "uq_meta_mes",
+      "indexdef": "CREATE UNIQUE INDEX uq_meta_mes ON public.metas USING btree (ano, mes)"
+    },
+    {
+      "tablename": "projetos",
+      "indexname": "projetos_pkey",
+      "indexdef": "CREATE UNIQUE INDEX projetos_pkey ON public.projetos USING btree (id)"
+    },
+    {
+      "tablename": "reunioes",
+      "indexname": "reunioes_pkey",
+      "indexdef": "CREATE UNIQUE INDEX reunioes_pkey ON public.reunioes USING btree (id)"
+    },
+    {
+      "tablename": "sessoes_usuario",
+      "indexname": "ix_sessoes_usuario_expira_em",
+      "indexdef": "CREATE INDEX ix_sessoes_usuario_expira_em ON public.sessoes_usuario USING btree (expira_em)"
+    },
+    {
+      "tablename": "sessoes_usuario",
+      "indexname": "ix_sessoes_usuario_usuario_id",
+      "indexdef": "CREATE INDEX ix_sessoes_usuario_usuario_id ON public.sessoes_usuario USING btree (usuario_id)"
+    },
+    {
+      "tablename": "sessoes_usuario",
+      "indexname": "sessoes_usuario_pkey",
+      "indexdef": "CREATE UNIQUE INDEX sessoes_usuario_pkey ON public.sessoes_usuario USING btree (token_hash)"
+    },
+    {
+      "tablename": "tentativas_login",
+      "indexname": "ix_tentativas_login_chave",
+      "indexdef": "CREATE INDEX ix_tentativas_login_chave ON public.tentativas_login USING btree (chave)"
+    },
+    {
+      "tablename": "tentativas_login",
+      "indexname": "tentativas_login_pkey",
+      "indexdef": "CREATE UNIQUE INDEX tentativas_login_pkey ON public.tentativas_login USING btree (id)"
+    },
+    {
+      "tablename": "tokens_email",
+      "indexname": "ix_tokens_email_usuario_id",
+      "indexdef": "CREATE INDEX ix_tokens_email_usuario_id ON public.tokens_email USING btree (usuario_id)"
+    },
+    {
+      "tablename": "tokens_email",
+      "indexname": "tokens_email_pkey",
+      "indexdef": "CREATE UNIQUE INDEX tokens_email_pkey ON public.tokens_email USING btree (token_hash)"
+    },
+    {
+      "tablename": "usuarios",
+      "indexname": "usuarios_email_key",
+      "indexdef": "CREATE UNIQUE INDEX usuarios_email_key ON public.usuarios USING btree (email)"
+    },
+    {
+      "tablename": "usuarios",
+      "indexname": "usuarios_email_normalizado",
+      "indexdef": "CREATE UNIQUE INDEX usuarios_email_normalizado ON public.usuarios USING btree (lower((email)::text))"
+    },
+    {
+      "tablename": "usuarios",
+      "indexname": "usuarios_pkey",
+      "indexdef": "CREATE UNIQUE INDEX usuarios_pkey ON public.usuarios USING btree (id)"
+    },
+    {
+      "tablename": "usuarios",
+      "indexname": "usuarios_um_admin",
+      "indexdef": "CREATE UNIQUE INDEX usuarios_um_admin ON public.usuarios USING btree (tipo) WHERE ((tipo)::text = 'ADMIN'::text)"
+    }
+  ],
+  "triggers": [
+    {
+      "tabela": "clientes",
+      "tgname": "trigger_atualizar_clientes",
+      "tgenabled": "O",
+      "definicao": "CREATE TRIGGER trigger_atualizar_clientes BEFORE UPDATE ON clientes FOR EACH ROW EXECUTE FUNCTION atualizar_data_modificacao()"
+    },
+    {
+      "tabela": "leads",
+      "tgname": "trigger_historico_lead",
+      "tgenabled": "O",
+      "definicao": "CREATE TRIGGER trigger_historico_lead BEFORE UPDATE ON leads FOR EACH ROW EXECUTE FUNCTION registrar_historico_lead()"
+    },
+    {
+      "tabela": "metas",
+      "tgname": "trigger_atualizar_metas",
+      "tgenabled": "O",
+      "definicao": "CREATE TRIGGER trigger_atualizar_metas BEFORE UPDATE ON metas FOR EACH ROW EXECUTE FUNCTION atualizar_data_modificacao()"
+    },
+    {
+      "tabela": "projetos",
+      "tgname": "trigger_atualizar_projetos",
+      "tgenabled": "O",
+      "definicao": "CREATE TRIGGER trigger_atualizar_projetos BEFORE UPDATE ON projetos FOR EACH ROW EXECUTE FUNCTION atualizar_data_modificacao()"
+    },
+    {
+      "tabela": "usuarios",
+      "tgname": "trigger_atualizar_usuarios",
+      "tgenabled": "O",
+      "definicao": "CREATE TRIGGER trigger_atualizar_usuarios BEFORE UPDATE ON usuarios FOR EACH ROW EXECUTE FUNCTION atualizar_data_modificacao()"
+    }
+  ],
+  "functions": [
+    {
+      "esquema": "public",
+      "proname": "atualizar_data_modificacao",
+      "argumentos": "",
+      "definicao": "CREATE OR REPLACE FUNCTION public.atualizar_data_modificacao()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nBEGIN\r\n    NEW.atualizado_em = CURRENT_TIMESTAMP;\r\n    RETURN NEW;\r\nEND;\r\n$function$\n"
+    },
+    {
+      "esquema": "public",
+      "proname": "registrar_historico_lead",
+      "argumentos": "",
+      "definicao": "CREATE OR REPLACE FUNCTION public.registrar_historico_lead()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\r\nBEGIN\r\n    IF OLD.fase IS DISTINCT FROM NEW.fase THEN\r\n\r\n        INSERT INTO historico_leads (\r\n            lead_id,\r\n            fase_anterior,\r\n            fase_nova,\r\n            movimentado_em\r\n        )\r\n        VALUES (\r\n            OLD.id,\r\n            OLD.fase,\r\n            NEW.fase,\r\n            CURRENT_TIMESTAMP\r\n        );\r\n\r\n    END IF;\r\n\r\n    NEW.atualizado_em = CURRENT_TIMESTAMP;\r\n\r\n    RETURN NEW;\r\nEND;\r\n$function$\n"
+    }
+  ],
+  "sequences": [
+    {
+      "schemaname": "public",
+      "sequencename": "checklist_items_id_seq",
+      "data_type": "bigint",
+      "start_value": 1,
+      "min_value": 1,
+      "max_value": 9223372036854775807,
+      "increment_by": 1,
+      "cycle": false,
+      "cache_size": 1
+    },
+    {
+      "schemaname": "public",
+      "sequencename": "clientes_id_seq",
+      "data_type": "bigint",
+      "start_value": 1,
+      "min_value": 1,
+      "max_value": 9223372036854775807,
+      "increment_by": 1,
+      "cycle": false,
+      "cache_size": 1
+    },
+    {
+      "schemaname": "public",
+      "sequencename": "historico_leads_id_seq",
+      "data_type": "bigint",
+      "start_value": 1,
+      "min_value": 1,
+      "max_value": 9223372036854775807,
+      "increment_by": 1,
+      "cycle": false,
+      "cache_size": 1
+    },
+    {
+      "schemaname": "public",
+      "sequencename": "leads_id_seq",
+      "data_type": "bigint",
+      "start_value": 1,
+      "min_value": 1,
+      "max_value": 9223372036854775807,
+      "increment_by": 1,
+      "cycle": false,
+      "cache_size": 1
+    },
+    {
+      "schemaname": "public",
+      "sequencename": "metas_id_seq",
+      "data_type": "bigint",
+      "start_value": 1,
+      "min_value": 1,
+      "max_value": 9223372036854775807,
+      "increment_by": 1,
+      "cycle": false,
+      "cache_size": 1
+    },
+    {
+      "schemaname": "public",
+      "sequencename": "projetos_id_seq",
+      "data_type": "bigint",
+      "start_value": 1,
+      "min_value": 1,
+      "max_value": 9223372036854775807,
+      "increment_by": 1,
+      "cycle": false,
+      "cache_size": 1
+    },
+    {
+      "schemaname": "public",
+      "sequencename": "reunioes_id_seq",
+      "data_type": "bigint",
+      "start_value": 1,
+      "min_value": 1,
+      "max_value": 9223372036854775807,
+      "increment_by": 1,
+      "cycle": false,
+      "cache_size": 1
+    },
+    {
+      "schemaname": "public",
+      "sequencename": "tentativas_login_id_seq",
+      "data_type": "bigint",
+      "start_value": 1,
+      "min_value": 1,
+      "max_value": 9223372036854775807,
+      "increment_by": 1,
+      "cycle": false,
+      "cache_size": 1
+    },
+    {
+      "schemaname": "public",
+      "sequencename": "usuarios_id_seq",
+      "data_type": "bigint",
+      "start_value": 1,
+      "min_value": 1,
+      "max_value": 9223372036854775807,
+      "increment_by": 1,
+      "cycle": false,
+      "cache_size": 1
+    }
+  ],
+  "extensions": [
+    {
+      "extname": "plpgsql",
+      "extversion": "1.0"
+    }
+  ],
+  "alembic_presence": [
+    {
+      "alembic_instalado": false
+    }
+  ],
+  "rolled_back": true
+}

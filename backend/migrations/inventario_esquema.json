@@ -1,0 +1,1115 @@
+{
+  "source": "SQLAlchemy metadata + explicit additions in historical SQL; not inspected database",
+  "tables": {
+    "historico_leads": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": true,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "lead_id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "fase_anterior",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "fase_nova",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "movimentado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": []
+    },
+    "leads": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": true,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "nome_empresa",
+          "type": "VARCHAR(150)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "nicho",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "telefone",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(150)",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "fase",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "observacao",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        },
+        {
+          "name": "atualizado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        },
+        {
+          "name": "prospectado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "arquivado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": []
+    },
+    "metas": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "ano",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "mes",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "meta_prospeccoes",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "0"
+        },
+        {
+          "name": "meta_reunioes",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "0"
+        },
+        {
+          "name": "meta_faturamento",
+          "type": "NUMERIC(12, 2)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "0"
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "datetime.now"
+        },
+        {
+          "name": "atualizado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "datetime.now"
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": []
+    },
+    "tentativas_login": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": true,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "chave",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITH TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": [
+        {
+          "name": "ix_tentativas_login_chave",
+          "unique": false,
+          "ddl": "CREATE INDEX ix_tentativas_login_chave ON tentativas_login (chave)"
+        }
+      ]
+    },
+    "usuarios": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": true,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "nome",
+          "type": "VARCHAR(150)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(150)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "senha_hash",
+          "type": "VARCHAR(255)",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "status_acesso",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "APROVADO",
+          "application_default": null
+        },
+        {
+          "name": "email_verificado",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "true",
+          "application_default": null
+        },
+        {
+          "name": "tipo",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "USUARIO",
+          "application_default": null
+        },
+        {
+          "name": "ativo",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "true",
+          "application_default": null
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        },
+        {
+          "name": "atualizado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "unique_constraints": [
+        [
+          "email"
+        ]
+      ],
+      "checks": [
+        {
+          "name": "usuarios_status_acesso_check",
+          "expression": "status_acesso IN ('PENDENTE', 'APROVADO', 'RECUSADO')"
+        },
+        {
+          "name": "usuarios_admin_ativo",
+          "expression": "tipo <> 'ADMIN' OR ativo"
+        },
+        {
+          "name": "usuarios_tipo_check",
+          "expression": "tipo IN ('ADMIN', 'USUARIO')"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "usuarios_um_admin",
+          "unique": true,
+          "ddl": "CREATE UNIQUE INDEX usuarios_um_admin ON usuarios (tipo) WHERE tipo = 'ADMIN'"
+        }
+      ]
+    },
+    "clientes": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": true,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "lead_id",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "nome_empresa",
+          "type": "VARCHAR(150)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "nicho",
+          "type": "VARCHAR(100)",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "telefone",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(150)",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "valor_mensal",
+          "type": "NUMERIC(12, 2)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "data_inicio",
+          "type": "DATE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_DATE",
+          "application_default": null
+        },
+        {
+          "name": "data_encerramento",
+          "type": "DATE",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "'ATIVO'",
+          "application_default": null
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        },
+        {
+          "name": "atualizado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "lead_id"
+          ],
+          "target": "leads.id",
+          "ondelete": null
+        }
+      ],
+      "unique_constraints": [
+        [
+          "lead_id"
+        ]
+      ],
+      "checks": [],
+      "indexes": []
+    },
+    "fluxos_google": {
+      "columns": [
+        {
+          "name": "state_hash",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "browser_hash",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "nonce",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "verifier",
+          "type": "VARCHAR(128)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "usuario_id",
+          "type": "BIGINT",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "sessao_hash",
+          "type": "VARCHAR(64)",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "expira_em",
+          "type": "TIMESTAMP WITH TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "state_hash"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "usuario_id"
+          ],
+          "target": "usuarios.id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": []
+    },
+    "identidades_google": {
+      "columns": [
+        {
+          "name": "sub",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "usuario_id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "email_google",
+          "type": "VARCHAR(150)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITH TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "sub"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "usuario_id"
+          ],
+          "target": "usuarios.id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique_constraints": [
+        [
+          "usuario_id"
+        ]
+      ],
+      "checks": [],
+      "indexes": []
+    },
+    "reunioes": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "lead_id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "data_reuniao",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "AGENDADA"
+        },
+        {
+          "name": "observacao",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "lead_id"
+          ],
+          "target": "leads.id",
+          "ondelete": null
+        }
+      ],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": []
+    },
+    "sessoes_usuario": {
+      "columns": [
+        {
+          "name": "token_hash",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "usuario_id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "expira_em",
+          "type": "TIMESTAMP WITH TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITH TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "token_hash"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "usuario_id"
+          ],
+          "target": "usuarios.id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": [
+        {
+          "name": "ix_sessoes_usuario_usuario_id",
+          "unique": false,
+          "ddl": "CREATE INDEX ix_sessoes_usuario_usuario_id ON sessoes_usuario (usuario_id)"
+        }
+      ]
+    },
+    "tokens_email": {
+      "columns": [
+        {
+          "name": "token_hash",
+          "type": "VARCHAR(64)",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "usuario_id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "finalidade",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "destino_email",
+          "type": "VARCHAR(150)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "expira_em",
+          "type": "TIMESTAMP WITH TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "usado_em",
+          "type": "TIMESTAMP WITH TIME ZONE",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "token_hash"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "usuario_id"
+          ],
+          "target": "usuarios.id",
+          "ondelete": "CASCADE"
+        }
+      ],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": [
+        {
+          "name": "ix_tokens_email_usuario_id",
+          "unique": false,
+          "ddl": "CREATE INDEX ix_tokens_email_usuario_id ON tokens_email (usuario_id)"
+        }
+      ]
+    },
+    "projetos": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": true,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "cliente_id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "nome_projeto",
+          "type": "VARCHAR(200)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "prazo",
+          "type": "DATE",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "prioridade",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "'MEDIA'",
+          "application_default": null
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "'PENDENTE'",
+          "application_default": null
+        },
+        {
+          "name": "observacao",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "datetime.now"
+        },
+        {
+          "name": "atualizado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": "CURRENT_TIMESTAMP",
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "cliente_id"
+          ],
+          "target": "clientes.id",
+          "ondelete": null
+        }
+      ],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": []
+    },
+    "checklist_items": {
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": true,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "projeto_id",
+          "type": "BIGINT",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "descricao",
+          "type": "VARCHAR(255)",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        },
+        {
+          "name": "concluido",
+          "type": "BOOLEAN",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "False"
+        },
+        {
+          "name": "ordem",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "0"
+        },
+        {
+          "name": "criado_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": false,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": "datetime.now"
+        },
+        {
+          "name": "concluido_em",
+          "type": "TIMESTAMP WITHOUT TIME ZONE",
+          "nullable": true,
+          "primary_key": false,
+          "identity_always": null,
+          "server_default": null,
+          "application_default": null
+        }
+      ],
+      "primary_key": [
+        "id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "projeto_id"
+          ],
+          "target": "projetos.id",
+          "ondelete": null
+        }
+      ],
+      "unique_constraints": [],
+      "checks": [],
+      "indexes": []
+    }
+  },
+  "unversioned_required_objects": [
+    "public.registrar_historico_lead()",
+    "trigger_historico_lead"
+  ],
+  "historical_sql_additions": [
+    {
+      "name": "usuarios_email_normalizado",
+      "table": "usuarios",
+      "type": "unique_expression_index",
+      "expression": "lower(email)"
+    },
+    {
+      "name": "ix_sessoes_usuario_expira_em",
+      "table": "sessoes_usuario",
+      "type": "index",
+      "columns": [
+        "expira_em"
+      ]
+    },
+    {
+      "name": "tokens_email_finalidade_check",
+      "table": "tokens_email",
+      "type": "check",
+      "expression": "finalidade IN ('VERIFICAR', 'RESET')"
+    }
+  ]
+}

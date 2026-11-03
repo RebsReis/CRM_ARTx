@@ -1,0 +1,15 @@
+{
+    "revision":  "20261027_0001",
+    "status":  "confirmed",
+    "reason":  "Reconciled against read-only PostgreSQL inspection 20261029; intended for a new empty isolated database only.",
+    "sha256":  {
+    "initial_schema.sql":  "430b36e2c0176a5b2504e27c7693be6203c6b9187b7e14a3da188be28c7b5892",
+                   "history_triggers.sql":  "7461b410a02e7aa791b59c99cc4152e80e907edb1274894d1f560fe1bdb8ca6f"
+               },
+    "historical_sql_sha256":  {
+                                  "migrations/20261016_preservar_leads_historicos.sql":  "ac2bbc59afa09b6df59dafb24d2e46592ca205853cc2c3523098bee95f193273",
+                                  "migrations/20261016_primeira_prospeccao.sql":  "75674ee0c5b6a33b05511ccc3c30173af277174242e40e0f0f3559593867e6c5",
+                                  "migrations/20261020_cadastro_google.sql":  "b6cfd9303e7db7c3f27e39d514ab3c204e28a864524f7a1c3e8a074ccd5cc366",
+                                  "migrations/20261020_usuarios_sessoes.sql":  "fb35941019151f6b8c7edb2ed5269a6cef72144776287b757102ca7c6ecb0f54"
+                              }
+}
