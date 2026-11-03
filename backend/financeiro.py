@@ -58,6 +58,29 @@ def registrar_reajuste(db: Session, cliente_id: int, valor_mensal: Decimal | flo
     return registro
 
 
+def alterar_valor_na_edicao(db: Session, cliente_id: int, valor_mensal: Decimal | float) -> ClienteValorMensal | None:
+    """Valor vindo da edicao do cliente: ignora se nao mudou e corrige a vigencia iniciada hoje."""
+    cliente = db.scalar(select(Cliente).where(Cliente.id == cliente_id).with_for_update())
+    if cliente is None:
+        raise HTTPException(404, "Cliente não encontrado.")
+    valor = Decimal(str(valor_mensal)).quantize(Decimal("0.01"))
+    if cliente.valor_mensal is not None and valor == Decimal(cliente.valor_mensal).quantize(Decimal("0.01")):
+        return None  # A tela sempre envia o valor; sem mudanca nao ha reajuste.
+    hoje = date.today()
+    de_hoje = db.scalar(select(ClienteValorMensal).where(
+        ClienteValorMensal.cliente_id == cliente_id,
+        ClienteValorMensal.vigencia_inicio == hoje,
+    ).with_for_update())
+    if de_hoje is None:
+        return registrar_reajuste(db, cliente_id, valor)
+    if cliente.status == "INATIVO":
+        raise HTTPException(409, "Cliente encerrado não aceita reajustes.")
+    # Mesma data: e uma correcao do valor do dia, nao uma nova vigencia.
+    de_hoje.valor_mensal = valor
+    cliente.valor_mensal = valor
+    return de_hoje
+
+
 def faturamento_recorrente_atual(db: Session) -> Decimal:
     hoje = date.today()
     registros = db.scalars(select(ClienteValorMensal).join(Cliente).where(

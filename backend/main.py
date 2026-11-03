@@ -22,7 +22,7 @@ import logging
 import os
 from auth import ORIGINS, proteger_crm, router as auth_router
 from auth_public import router as cadastro_router
-from financeiro import registrar_valor_inicial, registrar_reajuste, faturamento_recorrente_atual, faturamento_competencia, novos_faturamentos_competencia
+from financeiro import registrar_valor_inicial, registrar_reajuste, alterar_valor_na_edicao, faturamento_recorrente_atual, faturamento_competencia, novos_faturamentos_competencia
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
@@ -1384,7 +1384,7 @@ def editar_cliente(
 
     novo_valor = alteracoes.pop("valor_mensal", None) if "valor_mensal" in alteracoes else None
     if novo_valor is not None:
-        registrar_reajuste(db, cliente_id, novo_valor)
+        alterar_valor_na_edicao(db, cliente_id, novo_valor)
 
     if "nome_empresa" in alteracoes:
         nome = alteracoes["nome_empresa"]

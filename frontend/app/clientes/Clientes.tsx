@@ -138,7 +138,9 @@ async function salvarEdicao() {
     );
 
     if (!resposta.ok) {
-      throw new Error(await resposta.text());
+      const dados = await resposta.json().catch(() => null);
+      alert(typeof dados?.detail === "string" ? dados.detail : "Não foi possível atualizar o cliente.");
+      return;
     }
 
     const atualizado = await resposta.json();
