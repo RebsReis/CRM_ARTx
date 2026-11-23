@@ -38,6 +38,17 @@ class LeadCreate(BaseModel): #indica que estamos criando um modelo de validaçã
     ] = "PROSPECTAR"
 
     observacao: str | None = None
+
+
+class LeadImportacaoItem(LeadCreate):
+    linha: int = Field(ge=1)  # linha original na planilha, usada no resumo
+
+
+class LeadImportacao(BaseModel):
+    """Lote de leads vindo de uma planilha."""
+    leads: list[LeadImportacaoItem] = Field(min_length=1, max_length=2000)
+
+
 class LeadFaseUpdate(BaseModel):
     fase: Literal[
         "PROSPECTAR",

@@ -15,8 +15,8 @@ from fastapi import FastAPI, HTTPException, Query
 
 from fastapi import HTTPException, status,Depends
 from sqlalchemy.orm import Session
-from schemas import ChecklistUpdate, LeadCreate, LeadFaseUpdate, ClienteCreate,ProjetoCreate,ProjetoStatusUpdate, ChecklistItemCreate, ChecklistStatusUpdate,ProjetoUpdate, MetaCreate, ReuniaoCreate, ClienteReajusteCreate
-from sqlalchemy import select, text
+from schemas import ChecklistUpdate, LeadCreate, LeadImportacao, LeadFaseUpdate, ClienteCreate,ProjetoCreate,ProjetoStatusUpdate, ChecklistItemCreate, ChecklistStatusUpdate,ProjetoUpdate, MetaCreate, ReuniaoCreate, ClienteReajusteCreate
+from sqlalchemy import insert, inspect, select, text
 
 import logging
 import os
@@ -121,6 +121,84 @@ def primeira_prospeccao_historica(db: Session, lead_id: int):
             ]),
         )
     )
+
+
+def _normalizar_email(valor: str | None) -> str | None:
+    valor = (valor or "").strip().lower()
+    return valor or None
+
+
+def _normalizar_telefone(valor: str | None) -> str | None:
+    digitos = "".join(c for c in (valor or "") if c.isdigit())
+    return digitos or None
+
+
+def _texto_opcional(valor: str | None) -> str | None:
+    valor = (valor or "").strip()
+    return valor or None
+
+
+@app.post("/leads/importar")
+def importar_leads(dados: LeadImportacao, db: Session = Depends(get_db)):
+    """Importa leads de planilha em uma única transação, ignorando duplicados.
+
+    Duplicidade = mesmo e-mail (sem diferenciar maiúsculas) ou mesmo telefone
+    (comparando só os dígitos) de um lead ativo ou de uma linha anterior do lote.
+    """
+    # Serializa importações concorrentes para que a checagem de duplicidade valha.
+    db.execute(text("SELECT pg_advisory_xact_lock(hashtextextended('artx_importar_leads', 0))"))
+    emails: set[str] = set()
+    telefones: set[str] = set()
+    for email, telefone in db.execute(
+        select(Lead.email, Lead.telefone).where(Lead.arquivado_em.is_(None))
+    ):
+        if (e := _normalizar_email(email)):
+            emails.add(e)
+        if (t := _normalizar_telefone(telefone)):
+            telefones.add(t)
+
+    novos: list[dict] = []
+    ignorados: list[dict] = []
+    for item in dados.leads:
+        nome = item.nome_empresa.strip()
+        email = _normalizar_email(item.email)
+        telefone = _texto_opcional(item.telefone)
+        telefone_digitos = _normalizar_telefone(telefone)
+        if not nome:
+            ignorados.append({"linha": item.linha, "motivo": "Nome da empresa vazio."})
+            continue
+        if email and email in emails:
+            ignorados.append({"linha": item.linha, "motivo": f"E-mail já cadastrado: {email}"})
+            continue
+        if telefone_digitos and telefone_digitos in telefones:
+            ignorados.append({"linha": item.linha, "motivo": f"Telefone já cadastrado: {telefone}"})
+            continue
+        if email:
+            emails.add(email)
+        if telefone_digitos:
+            telefones.add(telefone_digitos)
+        novos.append({
+            "nome_empresa": nome,
+            "nicho": _texto_opcional(item.nicho),
+            "telefone": telefone,
+            "email": email,
+            "fase": item.fase,
+            "observacao": _texto_opcional(item.observacao),
+        })
+
+    criados: list[dict] = []
+    try:
+        if novos:
+            # Insert em lote com RETURNING: uma ida ao banco em vez de uma por lead.
+            colunas = [atributo.key for atributo in inspect(Lead).column_attrs]
+            for lead in db.scalars(insert(Lead).returning(Lead), novos):
+                criados.append({coluna: getattr(lead, coluna) for coluna in colunas})
+        db.commit()
+    except Exception:
+        db.rollback()
+        logger.exception("Erro ao importar leads")
+        raise HTTPException(status_code=500, detail="Não foi possível importar os leads. Nenhum lead foi salvo.")
+    return {"importados": len(criados), "ignorados": ignorados, "leads": criados}
 
 
 @app.patch("/leads/{lead_id}/fase")
