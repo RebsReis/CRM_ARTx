@@ -9,19 +9,13 @@ import {
 import CreateLeadModal from "../../components/CreateLeadModal";
 import LeadCard from "../../components/LeadCard";
 import KanbanColumn from "../../components/KanbanColumn";
+import ImportLeadsModal from "../../components/ImportLeadsModal";
+import { exportarLeads, type LeadPlanilha } from "../../lib/planilhaLeads";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./leads.css";
 
-type Lead = {
-  id: number;
-  nome_empresa: string;
-  nicho: string | null;
-  telefone: string | null;
-  email: string | null;
-  fase: string;
-  observacao: string | null;
-};
+type Lead = LeadPlanilha;
 
 const etapas = [
   {
@@ -54,6 +48,8 @@ export default function LeadsPage() {
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
+  const [importacaoAberta, setImportacaoAberta] = useState(false);
+  const [exportando, setExportando] = useState(false);
   const [leadEditando, setLeadEditando] = useState<Lead | null>(null);
     const [leadParaFechar, setLeadParaFechar] = useState<Lead | null>(null);
     const [valorContrato, setValorContrato] = useState("");
@@ -129,6 +125,23 @@ async function alterarFaseLead(leadId: number, novaFase: string) {
 
     carregarLeads();
   }, []);
+
+  // Mesmo recorte usado no quadro e na exportação: busca + filtro de etapa.
+  const leadsVisiveis = useMemo(() => {
+    const termo = busca.trim().toLocaleLowerCase("pt-BR");
+    return leads.filter((lead) =>
+      (!filtroEtapa || lead.fase === filtroEtapa) &&
+      `${lead.nome_empresa} ${lead.nicho ?? ""}`.toLocaleLowerCase("pt-BR").includes(termo)
+    );
+  }, [leads, busca, filtroEtapa]);
+
+  async function exportar(formato: "xlsx" | "csv") {
+    if (exportando || !leadsVisiveis.length) return;
+    setExportando(true);
+    try { await exportarLeads(leadsVisiveis, formato); }
+    catch (erro) { console.error("Erro ao exportar leads:", erro); alert("Não foi possível gerar o arquivo de exportação."); }
+    finally { setExportando(false); }
+  }
 
   
 
@@ -241,7 +254,27 @@ async function confirmarContrato() {
       <div className="leads-topbar"><span className="leads-topbar-mark"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg></span><span>ART X <span className="leads-topbar-caption">CRM Ag&ecirc;ncia</span></span></div>
       <div className="leads-content-heading">
         <div><h1>Leads</h1><p>Funil de vendas &mdash; arraste cards entre as colunas.</p></div>
-        <div className="leads-heading-actions"><span className="leads-total">Total: <strong>{leads.length}</strong></span><button type="button" onClick={() => setModalAberto(true)} className="leads-new">+ Novo lead</button></div>
+        <div className="leads-heading-actions">
+          <span className="leads-total">Total: <strong>{leads.length}</strong></span>
+          <button type="button" className="leads-secondary" disabled={carregando} onClick={() => setImportacaoAberta(true)}>
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
+            Importar
+          </button>
+          <details className="lead-actions leads-export" onKeyDown={(e) => { if (e.key === "Escape") e.currentTarget.open = false; }}>
+            <summary className="leads-secondary" aria-disabled={!leadsVisiveis.length || exportando}
+              title={leadsVisiveis.length ? `Exportar ${leadsVisiveis.length} leads exibidos` : "Nenhum lead para exportar"}
+              onClick={(e) => { if (!leadsVisiveis.length || exportando) e.preventDefault(); }}>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 15V3m0 0-4 4m4-4 4 4"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
+              {exportando ? "Exportando..." : "Exportar"}
+            </summary>
+            <div className="lead-actions-popup">
+              <p className="leads-export-note">{leadsVisiveis.length} {leadsVisiveis.length === 1 ? "lead exibido" : "leads exibidos"}{(busca.trim() || filtroEtapa) ? " (com filtros)" : ""}</p>
+              <button type="button" onClick={(e) => { e.currentTarget.closest("details")?.removeAttribute("open"); void exportar("xlsx"); }}>Excel (.xlsx)</button>
+              <button type="button" onClick={(e) => { e.currentTarget.closest("details")?.removeAttribute("open"); void exportar("csv"); }}>CSV (.csv)</button>
+            </div>
+          </details>
+          <button type="button" onClick={() => setModalAberto(true)} className="leads-new">+ Novo lead</button>
+        </div>
       </div>
       <div className="leads-filters">
         <div className="leads-search"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></svg><input aria-label="Buscar por empresa ou nicho" placeholder="Buscar por empresa ou nicho..." value={busca} onChange={(e) => setBusca(e.target.value)} /></div>
@@ -266,9 +299,7 @@ async function confirmarContrato() {
 >
      <div className="leads-board">
         {etapas.filter((etapa) => !filtroEtapa || etapa.codigo === filtroEtapa).map((etapa) => {
-          const leadsDaEtapa = leads.filter(
-            (lead) => lead.fase === etapa.codigo && `${lead.nome_empresa} ${lead.nicho ?? ""}`.toLocaleLowerCase("pt-BR").includes(busca.trim().toLocaleLowerCase("pt-BR"))
-          );
+          const leadsDaEtapa = leadsVisiveis.filter((lead) => lead.fase === etapa.codigo);
 
           return (
             <KanbanColumn
@@ -341,6 +372,7 @@ async function confirmarContrato() {
       </DndContext>
       
 {modalAberto && <CreateLeadModal fechar={() => setModalAberto(false)} aoCriar={(lead) => setLeads((anteriores) => [...anteriores, lead])}/>}
+{importacaoAberta && <ImportLeadsModal leadsExistentes={leads} fechar={() => setImportacaoAberta(false)} aoImportar={(novos) => setLeads((anteriores) => [...anteriores, ...novos])}/>}
 
 {leadParaFechar && (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
